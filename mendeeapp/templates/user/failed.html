@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Mendee</title>
+</head>
+<body style="background-color: #fff;">
+
+   <section>
+       <div class="error">
+           <div class="error-content">
+               <h1>Success!</h1>
+               <h3>You've successfully made payment to Mendee.</h3>
+               <p>Thank you for your payment </p>
+               <a href="{{ url_for('home')}}" class="btn btn-primary">Go Home</a>
+           </div>
+           <div class="error-img">
+               <img width="550" height="380" src="{{ url_for('static',filename='images/failed.jpg')}}" alt="">
+           </div>
+       </div>
+   </section>
+    
+
+
+    
+    
+    
+</body>
+</html>

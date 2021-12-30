@@ -1,0 +1,52 @@
+{% extends 'user/dashboardlayout.html' %}
+
+{% block img%}
+{% if records[0].cust_profile_pic != None: %}
+{% set t = "customerprofilepictures"+'/'+records[0].cust_profile_pic %}
+{% else %}
+{% set t = "images/avatar.jpg" %}
+{% endif %}
+   <li><img class="rounded-circle" src=" {{ url_for('static',filename=t)}}" width="230" height="230"  alt=""></li>
+{% endblock img %}
+
+<!-- varying section starts -->
+{% block varyingcontent %}
+                    
+
+<div class="user-content">
+                    {% set m = get_flashed_messages() %}
+                    {% if m: %}                        
+                    {% for i in m: %}  
+                    <p class="alert alert-info">{{ i }}</p> 
+                    {% endfor %}   
+                    {% endif %}
+    <div class="profile-head">
+         <div class="profile-h2"><h2>Upload Profile Picture</h2></div>
+         <div class="profile-a"></div>
+    </div>
+    <hr class="profile-hr">
+    <div class="edit-profile-body">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="change-pic">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                {% if records[0].cust_profile_pic != None: %}
+                    {% set img = "customerprofilepictures"+'/'+records[0].cust_profile_pic %}
+                    {% else %}
+                    {% set img = "images/avatar.jpg" %}
+                    {% endif %}
+                <img src=" {{ url_for('static',filename=img)}}" width="200" height="200" alt="" class="rounded-circle">
+                <br>
+                <div class="col-md-5"><label for="">Choose File</label><input type="file" name='uploadpic' class="form-control" id=""></div>
+            </div>
+            <br>
+            <div><button class="btn btn-primary">Upload</button></div>
+            
+        </form>
+        
+        
+
+    </div>
+    
+</div>
+
+{% endblock %}

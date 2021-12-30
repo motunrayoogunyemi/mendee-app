@@ -1,0 +1,67 @@
+{% extends 'admin/dashboardlayout.html' %}
+
+{% block img%}
+{% if records[0].craftsp_profile_pic != None: %}
+{% set t = "menderprofilepicture"+'/'+records[0].craftsp_profile_pic %}
+{% else %}
+{% set t = "images/avatar.jpg" %}
+{% endif %}
+   <li><img class="rounded-circle" src=" {{ url_for('static',filename=t)}}" width="230" height="230" alt=""></li>
+{% endblock img %}
+
+<!-- varying section starts -->
+{% block varyingcontent %}
+<div class="user-content">
+    <div class="profile-head">
+         <div class="profile-h2"><h2>My Bookings</h2></div>
+         <div class="profile-a"></div>
+    </div>
+    <hr class="profile-hr">
+    <div class="edit-order-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>S/N</th>
+                    <th>Customer name</th> 
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Customer Address</th>    
+                    <th>Status</th>   
+                </tr>
+                {% for i in mybookings %}
+                
+                <tr id="cancel">
+                    <td> {{loop.index}} </td>
+                    <td> {{i.bookings_cust.cust_fname}} {{i.bookings_cust.cust_lname}} </td>
+                    <td> {{i.bdetails1_service}} </td>
+                    <td> {{i.btimedate_date}} {{i.btimedate_month}} </td>
+                    <td> {{i.btimedate_time}} </td>
+                    <td> {{i.bookings_cust.cust_address}} </td>
+                    {% if i.bookings_status == 'success' %}
+                    <td> {{i.bookings_status}} </td>
+                    {% else %}
+                    <td> {{i.bookings_status}} </td>
+                    {% endif %}
+                </tr>
+                
+                <tr>
+                    <td></td>
+                </tr>
+                {% endfor %}
+            </table>
+     
+    </div>
+    
+</div>
+
+<script src="{{url_for('static',filename='js/jquery.min.js')}}" type="text/javascript"></script>
+
+<script type='text/javascript'>
+    $(document).ready(function(){
+        $('#cancelbtn').click(function(){
+            $('#cancel').remove()
+        })
+    })
+</script>
+{% endblock %}
+<!-- varying section ends -->

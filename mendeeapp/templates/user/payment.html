@@ -1,0 +1,39 @@
+{% extends 'user/dashboardlayout.html' %}
+
+{% block img%}
+{% if records[0].cust_profile_pic != None: %}
+{% set t = "customerprofilepictures"+'/'+records[0].cust_profile_pic %}
+{% else %}
+{% set t = "images/avatar.jpg" %}
+{% endif %}
+   <li><img class="rounded-circle" src=" {{ url_for('static',filename=t)}}" width="230" height="230"   alt=""></li>
+{% endblock img %}
+
+<!-- varying section starts -->
+{% block varyingcontent %}
+
+<div class="user-content">
+    <div class="profile-head">
+         <div class="profile-h2"><h2>Payment info</h2></div>
+         <div class="profile-a"></div>
+    </div>
+    <hr class="profile-hr">
+    <div class="edit-payment-body">
+        <!-- <form action="">
+            <div><label for="">card number</label><input type="text" placeholder="*********" name="cardnumber" class="form-control"></div>
+            <div><label for="">MM/YY</label><input type="text" placeholder="MM/YY" name="expdate" class="form-control"></div>
+            <div><label for="">cvv</label><input type="text" placeholder="***" name="cvv" class="form-control"></div>
+            <div>
+                <button class="btn btn-outline-primary">Cancel</button>
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </form> -->
+        <h3>Our payment Policy</h3>
+        <p>Note that we use the paystack payment gateway so payments are secure</p>
+        <p>Your credit card info does.nt go to us and we have no access to it</p>
+        <p>On cancellation of any syccessful booking, your refund would be processed in 5-7 working days</p>
+    </div>
+    
+</div>
+{% endblock %}
+<!-- varying section ends -->

@@ -1,0 +1,66 @@
+{% extends 'user/dashboardlayout.html' %}
+
+{% block img%}
+{% if records[0].cust_profile_pic != None: %}
+{% set t = "customerprofilepictures"+'/'+records[0].cust_profile_pic %}
+{% else %}
+{% set t = "images/avatar.jpg" %}
+{% endif %}
+   <li><img class="rounded-circle" src=" {{ url_for('static',filename=t)}}" width="230" height="230" alt=""></li>
+{% endblock img %}
+
+<!-- varying section starts -->
+{% block varyingcontent %}
+{{ bookingdeets }}
+<div class="user-content">
+    <div class="profile-head">
+         <div class="profile-h2"><h2>My Mendee Bookings</h2></div>
+         <div class="profile-a"></div>
+    </div>
+    <hr class="profile-hr">
+    <div class="edit-order-body">
+        
+        <p><span class="text-danger">Please Note: </span>Cancellations should be made 5 hours before the booking date/time. Cancellations made after that would be considered for no refunds. Please adhere to our policies</p>
+        <form action="" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <table class="table table-sm table-striped ">
+                <tr>
+                    <th>S/N</th> 
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Address</th>      
+                    <th>Mender</th>
+                    <th>Tran Ref</th>
+                    <th>cancel booking</th>
+                </tr>
+                {% for i in bookingdeets %}
+                <tr id="cancel">
+                    <td>{{ i.bid }} </td>
+                    <td> {{ i.bdetails1_service }}</td>
+                    <td> {{ i.btimedate_date }} {{ i.btimedate_month}} </td>
+                    <td> {{ i.btimedate_time}} </td>
+                    <td> {{ i.bdetails1_location}} </td>
+                    <td> {{ i.bookings_craftsp.craftsp_fname}} {{ i.bookings_craftsp.craftsp_lname}} </td>
+                    <td> {{ i.btrx_ref }} </td>
+                    <td><button id="cancelbtn" class="btn btn-danger">cancel</button></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+     
+    </div>
+    
+</div>
+
+<script src="{{url_for('static',filename='js/jquery.min.js')}}" type="text/javascript"></script>
+
+<script type='text/javascript'>
+    $(document).ready(function(){
+        $('#cancelbtn').click(function(){
+            $('#cancel').remove()
+        })
+    })
+</script>
+{% endblock %}
+<!-- varying section ends -->

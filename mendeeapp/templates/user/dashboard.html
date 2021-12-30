@@ -1,0 +1,48 @@
+{% extends 'user/dashboardlayout.html' %}
+
+
+                    {% block img%}
+                   {% if records[0].cust_profile_pic != None: %}
+                    {% set t = "customerprofilepictures"+'/'+records[0].cust_profile_pic %}
+                    {% else %}
+                    {% set t = "images/avatar.jpg" %}
+                    {% endif %}
+                       <li><img class="rounded-circle" width="230" height="230" src=" {{ url_for('static',filename=t)}}"  alt=""></li>
+                    {% endblock img %}
+            <!-- varying section starts -->
+            {% block varyingcontent %}
+            <div class="welcomeuser">
+                <h3 class="mr-5">Welcome {{ mydata.cust_fname }} {{ mydata.cust_lname }}</h3>
+            </div>
+            <div class="user-content">
+                {% set m = get_flashed_messages() %}
+                {% if m: %}                        
+                {% for i in m: %}  
+                <p class="alert alert-info">{{ i }}</p> 
+                {% endfor %}   
+                {% endif %}
+                <div class="profile-head">
+                     <div class="profile-h2"><h2>Your profile</h2></div>
+                     <form action="(url_for('editprofile'))" method="post">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <div class="profile-a"><a class="btn btn-outline-primary" href="{{ url_for('editprofile')}}">Edit Profile</a></div>
+                     </form>
+                     
+                </div>
+                <hr class="profile-hr">
+                <div class="profile-body">
+                     <ul>
+                         <li><i class="fas fa-user mt-2"></i> {{ mydata.cust_fname }} {{ mydata.cust_lname }} </li>
+                         <li><i class="far fa-envelope mt-2"></i>  {{ mydata.cust_email }} </li>
+                         <li><i class="fas fa-phone mt-2"></i> {{ mydata.cust_phone }} </li>
+                         <li><i class="fas fa-map-marker-alt mt-2"></i> {{ mydata.cust_address }} </li>
+                         <a href="{{ url_for('logout')}}" class="btn btn-primary mt-4">log out</a>
+                     </ul>
+                </div>
+                
+            </div>
+            {% endblock %}
+            <!-- varying section ends -->
+        </div>
+    </div>
+</section>

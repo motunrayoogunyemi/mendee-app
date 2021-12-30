@@ -1,0 +1,56 @@
+{% extends 'admin/dashboardlayout.html' %}
+
+{% block img%}
+{% if records[0].craftsp_profile_pic != None: %}
+{% set t = "menderprofilepicture"+'/'+records[0].craftsp_profile_pic %}
+{% else %}
+{% set t = "images/avatar.jpg" %}
+{% endif %}
+   <li><img class="rounded-circle" width="230" height="230" src=" {{ url_for('static',filename=t)}}"  alt=""></li>
+{% endblock img %}
+
+<!-- varying section starts -->
+{% block varyingcontent %}
+
+<div class="user-content">
+    {% set m = get_flashed_messages() %}
+                {% if m: %}                        
+                {% for i in m: %}  
+                <p class="alert alert-danger">{{ i }}</p> 
+                {% endfor %}   
+                {% endif %}
+    <div class="profile-head">
+         <div class="profile-h2"><h2>Payment info</h2></div>
+         <div class="profile-a"></div>
+    </div>
+    <hr class="profile-hr">
+    <div class="edit-payment-body">
+        <!-- <form action="">
+            <div><label for="">card number</label><input type="text" placeholder="*********" name="cardnumber" class="form-control"></div>
+            <div><label for="">MM/YY</label><input type="text" placeholder="MM/YY" name="expdate" class="form-control"></div>
+            <div><label for="">cvv</label><input type="text" placeholder="***" name="cvv" class="form-control"></div>
+            <div>
+                <button class="btn btn-outline-primary">Cancel</button>
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </form> -->
+        <h3>Job Payment</h3>
+        <p>Note that we use the paystack payment gateway to recieve payment from customers</p>
+        <p>Payment would be made to menders within 24 hours on successful completion of job</p>
+        <p class="font-weight-bold">Update your Bank Account Details Below</p>
+        <form action="" method="post">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div><label class="mt-2">Account Name <span style="color: red;">*</span></label><input type="text" placeholder="E.g Ciroma Babatunde Williams" name="accountname" class="form-control"></div>
+            <div><label class="mt-2">Account Number <span style="color: red;">*</span></label><input type="text" placeholder="E.g 0134xxxxxx" name="accountnumber" class="form-control mt-1"></div>
+            <div><label class="mt-2">Bank Name <span style="color: red;">*</span></label><input type="text" placeholder="E.g Example Bank" name="bankname" class="form-control mt-1"></div>
+            <br>
+            <div>
+                <a href="/mender/account" class="btn btn-outline-primary">Cancel</a>
+                <button class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+    
+</div>
+{% endblock %}
+<!-- varying section ends -->

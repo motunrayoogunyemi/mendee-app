@@ -1,0 +1,41 @@
+{% extends 'user/userlayout.html' %}
+
+
+{% block topcontent %}
+{% include 'user/bookingsnav.html' %}
+
+<section>
+    <div class="big-container">
+        <div class="payconf-box">
+            <h4>You are about to make the payment with the following details</h4>
+            <br>
+            <form action="" method="post">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <table class="table">
+                    <tr>
+                        <td>Amount</td>
+                        <td>{{ deets.trx_amt }}</td>
+                    </tr>
+                    <tr>
+                        <td>Transaction ref</td>
+                        <td>{{ deets.trx_ref }}</td>
+                    </tr>
+                    <tr>
+                        <td>Payment status</td>
+                        <td>{{ deets.trx_status }}</td>
+                    </tr>
+                </table>
+                <button class="btn btn-primary">Confirm Payment</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+{% endblock topcontent %}
+
+    
+
+   
+
+

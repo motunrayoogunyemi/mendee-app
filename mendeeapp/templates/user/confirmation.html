@@ -1,0 +1,53 @@
+{% extends 'user/userlayout.html' %}
+
+
+{% block topcontent %}
+{% include 'user/bookingsnav.html' %}
+
+<section>
+    <div class="big-container">
+        <div class="all-details">
+            <div class="top">
+                <div>
+                    <img src="" alt="">
+                    <h4 class="text-center">Booking Details</h4>
+                    <hr class="myhr">
+                </div>
+                <div>
+                    <h4>Mender Name: {{ bookingstbl['bookings_craftsp']['craftsp_fname']}} {{ bookingstbl['bookings_craftsp']['craftsp_lname']}}</h4>
+                    <h4>Mender service: {{ bookingstbl['bookings_craftsp']['craftsp_role']}}</h4>
+                </div>
+            </div>
+            <hr>
+            <div class="middle">
+                <h4>Date & Time: {{ bookingstbl['btimedate_date'] }}, {{ bookingstbl['btimedate_month'] }}. {{ bookingstbl['btimedate_time'] }}</h4>
+                <h4>Service: {{ bookingstbl['bookings_craftsp']['craftsp_role']}}</h4>
+            </div>
+
+            <hr>
+            <div class="bottom">
+                <h4>Hourly payment price : {{ bookingstbl['bookings_service']['service_price']}} </h4>
+            </div>  
+        </div>
+        <div class="payment-details">
+            <p>You are about to make the payment details below. Note that we charge hourly and our menders would only be available for the hours specified. </p>
+            <div class="col-md-5">
+                <form action="" method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="text" name="amount" value="{{ bookingstbl['bookings_service']['service_price']}}" readonly class="form-control">
+                    <button class="btn btn-primary mt-2">Proceed</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+{% endblock topcontent %}
+
+    
+
+   
+
+

@@ -1,0 +1,85 @@
+{% include 'user/nav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Dashboard layout</title>
+</head>
+<body>
+    
+    <!-- <div class="container"> -->
+        <!-- nav -->
+        <!-- <div class="row">
+           <div class="col nav-bar" >
+               <header>
+                   <div class="logo">
+                       <span class="logo-text">Mendee</span>
+                   </div>
+                   <nav class="acc-nav">
+                       <ul>
+                           <li><a href="{{ url_for('home')}}">Home</a></li>
+                           <li><a href="{{ url_for('bookamender')}}">Book a mender</a></li>
+                           <li><a href="{{ url_for('account')}}">Account</a></li>
+                           <li><a href="{{ url_for('logout')}}">Log out</a></li>
+                       </ul>
+                  </nav>
+               </header>
+           </div>
+       </div>
+   </div> -->
+
+   <!-- account -->
+   <section>
+       <div class="account">
+           
+           <div class="user-container">
+                <div class="menu-cont men" id="menuCont1">
+                    <div class="menu menu1"></div>
+                    <div class="menu menu2"></div>
+                    <div class="menu menu3"></div>
+                </div>
+               <div class="side-bar bg-dark" id="sideLinks" style="z-index: 10;">
+                   <div class="profile-pic"></div>
+                   <div class="side-bar-links">
+                    {% block img%}
+
+                    {% endblock img %}
+                        <li><a href="{{ url_for('addprofilepic')}}" class="mylinks"><i class="far fa-images mr-2"></i>Upload Profile Picture</a></li>
+                        <li><a href="{{ url_for('account')}}" class="mylinks"><i class="fas fa-user-circle mr-2"></i>Profile</a></li>
+                        <li><a href="{{ url_for('editprofile')}}" class="mylinks"><i class="far fa-user-circle mr-2"></i>Edit Profile</a></li>
+                        <li><a href="{{ url_for('resetpassword')}}" class="mylinks"><i class="fas fa-key mr-2"></i>Reset password</a></li>
+                        <li><a href="{{ url_for('payment')}}" class="mylinks"><i class="fas fa-money-check mr-2"></i>Payment Info</a></li>
+                        <li><a href="{{ url_for('mymendeebookings')}}" class="mylinks"><i class="fas fa-sort-amount-up-alt mr-2"></i>My mendee bookings</a></li>
+                        <li><a href="{{ url_for('logout')}}" class="mylinks"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a></li>
+                        
+                   </div>
+               </div>
+               <!-- varying section starts -->
+               {% block varyingcontent %}
+
+               {% endblock %}
+               <!-- varying section ends -->
+           </div>
+       </div>
+   </section>
+
+
+   <script src="{{url_for('static',filename='js/jquery.min.js')}}" type="text/javascript"></script>
+   <script src="{{url_for('static',filename='js/popper.min.js')}}" type="text/javascript"></script>
+   <script src="{{url_for('static',filename='js/bootstrap.js')}}" type="text/javascript"></script>
+   <script type="text/javascript">
+       $(document).ready(function(){
+           $('#menuCont1').click(function(){
+                $("#sideLinks").fadeToggle("slow");
+               //$('#sideLinks').toggleClass('displaynav')
+           })
+       })
+       
+   </script>
+</body>
+</html>

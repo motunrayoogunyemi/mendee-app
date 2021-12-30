@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Become a mender</title>
+</head>
+<body class="become-mender">
+
+    <div class="layout">
+
+        <div class="form-section">
+            <div class="form-container">
+                <div class="white-container">
+                    <h1>Mendee</h1>
+                    <button class="btn btn-block btn-primary">Sign Up</button>
+                    <button class="btn btn-block btn-outline-primary">Log In</button>
+                </div>
+            </div>
+
+
+
+            <div class="form-container">
+                <div class="white-container">
+                    <h1>Mendee</h1>
+                    <p>Sign Up To Mendee (user)</p>
+                    <form action="" method="post">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <div><label for="">Please enter your First name <span>*</span></label><input type="text" name="firstname" placeholder="Firstname" class="form-control"></div>
+                        <div class="mt-3"><label for="">Please enter your Last name <span>*</span></label><input type="text" name="lastname" placeholder="Lastname" class="form-control"></div>
+                        <div class="mt-3"><label for="">Please enter your Business name <span>*</span></label><input type="text" name="businessname" placeholder="Business Name" class="form-control"></div>
+                        <div class="mt-3"><label for="">Please enter your Email Address <span>*</span></label><input type="email" name="email" placeholder="example@email.com" class="form-control"></div>
+                        <div class="mt-3"><label for="">Please enter your Phone Number <span>*</span></label><input type="text" name="phone" placeholder="080********" class="form-control"></div>
+                        <div class="mt-3"><label for="">Please enter a password <span>*</span></label><input type="password" name="password" placeholder="***********" class="form-control"></div>
+                        <div class="mt-3"><label for="">Please enter your Address<span>*</span></label><input type="text" name="address" placeholder="address" class="form-control"></div>
+                        <div class="mt-3"><label for="">Please select a role <span>*</span></label>
+                            <select name="role" id="" class="form-control">
+                                <option value="select">Select</option>
+                                <option value="house cleaning">house cleaning</option>
+                                <option value="laundry">laundry</option>
+                                <option value="party cleaning">party cleaning</option>
+                                <option value="plumbing">Plumbing</option>
+                                <option value="electrical repairs">Electrical repairs</option>
+                                <option value="carpentry">carpentry</option>
+                                <option value="installations">installations</option>
+                                <option value="general home maintenance">General home maintenance</option>
+                                <option value="generator repairs">Generator repairs</option>
+                                <option value="house moving">House moving</option>
+                                <option value="pick-ups/drop-offs">Pick-ups/Drop-offs</option>
+                                <option value="grocery shopping">Grocery shopping</option>
+                            </select>
+                        
+                        </div>
+                        <div class="mt-3"><button class="btn btn-block btn-primary">Sign Up</button></div>
+                    </form>
+                    <p class="mt-3 para2">By registering you agree to Mendee's <a href="">Terms of Use</a>  and <a href="">Privacy Policy</a> .</p>
+                    <hr class="form-hr">
+                    <p class="para3">Already have an account? <a href=""> Log in</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="form-container">
+                <div class="white-container">
+                    <h1>Mendee</h1>
+                    <p>Log In To Mendee (Mender)</p>
+                    <form action="">
+                        <div class="mt-3"><label for="">Please enter your Email Address <span>*</span></label><input type="email" name="" placeholder="Email" class="form-control"></div>
+                        <div class="mt-3"><label for="">Please enter your password <span>*</span></label><input type="password" name="" placeholder="***********" class="form-control"></div>
+                        <div class="mt-3"><button class="btn btn-block btn-primary">Log In</button></div>
+                    </form>
+                    <hr class="form-hr mt-5">
+                    <p class="para3 mt-3">Don't have an account? <a href=""> Sign Up</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

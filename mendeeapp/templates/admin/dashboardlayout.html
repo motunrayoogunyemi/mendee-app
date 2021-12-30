@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Dashboard layout</title>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- nav -->
+        <div class="row">
+           <div class="col nav-bar" >
+               <header>
+                   <div class="logo">
+                       <span class="logo-text">Mendee</span>
+                   </div>
+
+                   <nav>
+                       <ul>
+                           <li><a href="{{ url_for('home')}}">Home</a></li>
+                           <li><a href="{{ url_for('menderaccount')}}">Account</a></li>
+                           <li><a href="{{ url_for('menderlogout')}}">Log out</a></li>
+                       </ul>
+                  </nav>
+               </header>
+           </div>
+       </div>
+   </div>
+
+   <!-- account -->
+   <section>
+       <div class="account">
+           
+           <div class="user-container">
+               <div class="side-bar bg-dark">
+                   <div class="profile-pic"></div>
+                   <div class="side-bar-links">
+                    {% block img%}
+
+                    {% endblock img %}
+                        <li><a href="{{ url_for('menderaddprofilepic')}}" class="mylinks"><i class="far fa-images mr-2"></i>Upload Profile Picture</a></li>
+                        <li><a href="{{ url_for('menderaccount')}}" class="mylinks"><i class="fas fa-user-circle mr-2"></i>Profile</a></li>
+                        <li><a href="{{ url_for('mendereditprofile')}}" class="mylinks"><i class="far fa-user-circle mr-2"></i>Edit Profile</a></li>
+                        <li><a href="{{ url_for('menderresetpassword')}}" class="mylinks"><i class="fas fa-key mr-2"></i>Reset password</a></li>
+                        <li><a href="{{ url_for('menderpaymentdetails')}}" class="mylinks"><i class="fas fa-money-check mr-2"></i>Payment Details</a></li>
+                        <li><a href="{{ url_for('menderbookings')}}" class="mylinks"><i class="fas fa-sort-amount-up-alt mr-2"></i>My mendee bookings</a></li>
+                        <li><a href="{{ url_for('menderlogout')}}" class="mylinks"><i class="fas fa-sign-out-alt mr-2"></i>Logout</a></li>
+                        
+                   </div>
+               </div>
+               <!-- varying section starts -->
+               {% block varyingcontent %}
+
+               {% endblock %}
+               <!-- varying section ends -->
+           </div>
+       </div>
+   </section>
+
+
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>bookings nav</title>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- nav -->
+        <div class="row">
+           <div class="col nav-bar" >
+               <header>
+                   <nav>
+                       <ul>      
+                           <li class="fs">Describe the help you need</li>   
+                           <li><img class="is" width="65" height="65" src="{{ url_for('static',filename='images/fast-forward.png')}}" alt=""></li>
+                           <li class="fs">Browse menders</li>   
+                           <li><img class="is" width="65" height="65" src="{{ url_for('static',filename='images/fast-forward.png')}}" alt=""></li> 
+                           <li class="fs">pick date and time</li>   
+                           <li><img class="is" width="65" height="65" src="{{ url_for('static',filename='images/fast-forward.png')}}" alt=""></li> 
+                           <li class="fs">confirm details</li>    
+                       </ul>
+                  </nav>
+               </header>
+           </div>
+       </div>
+   </div>
+</body>
+</html>

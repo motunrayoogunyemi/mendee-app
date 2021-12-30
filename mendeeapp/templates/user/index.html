@@ -1,0 +1,328 @@
+{% extends 'user/userlayout.html' %}
+
+
+<!-- hero -->
+{% block topcontent %}
+
+<section>
+    <!-- <svg class="svg-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#CCF381" fill-opacity="1" d="M0,224L40,202.7C80,181,160,139,240,144C320,149,400,203,480,208C560,213,640,171,720,138.7C800,107,880,85,960,101.3C1040,117,1120,171,1200,165.3C1280,160,1360,96,1400,64L1440,32L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg> -->
+    <div class="hero">
+        
+        <div class="hero-content">
+            <h1>Connecting You to Help <br> When You Need It</h1>
+            <p>Get help around the house from a trusted Mender. From capentry work and plumbing to cleaning, welding, and more.</p>
+            <!-- <form action=""> -->
+                
+                <div class="search-box">
+                    <!-- <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"> -->
+                    <input id="search" type="text" placeholder="Search.." name="search" class="search-text">
+                </div>
+                
+            <!-- </form> -->
+            <div class="result"></div>
+           
+            <!-- <form action="" method="post">
+                <div class="search-box">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input id="search" type="text" placeholder="Search.." name="search" class="search-text">
+                    <button id="searchbtn" class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form> -->
+        </div>
+        <div class="hero-image text-center">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,122.7C640,160,800,224,960,224C1120,224,1280,160,1360,128L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg> -->
+            <img width="600px"  src="{{ url_for('static',filename='images/myhero.jpg')}}" alt="image of menders">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,122.7C640,160,800,224,960,224C1120,224,1280,160,1360,128L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg> -->
+        </div>
+    </div>
+    <svg class="svg-bottom1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#4831D4" fill-opacity="1" d="M0,224L40,202.7C80,181,160,139,240,144C320,149,400,203,480,208C560,213,640,171,720,138.7C800,107,880,85,960,101.3C1040,117,1120,171,1200,165.3C1280,160,1360,96,1400,64L1440,32L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+    <!-- <svg class="svg-bottom2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,224L40,202.7C80,181,160,139,240,144C320,149,400,203,480,208C560,213,640,171,720,138.7C800,107,880,85,960,101.3C1040,117,1120,171,1200,165.3C1280,160,1360,96,1400,64L1440,32L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg> -->
+</section>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<script src="{{url_for('static',filename='js/jquery.min.js')}}" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        //alert('ajhbfsh')
+        $('#search').on('input', function(e){
+            var searchtext = $('#search').val();
+            $.ajax({
+                method:'GET',
+                url:"/live",
+                data:{mytext:searchtext},
+                dataType:'text',
+                success:function(res){
+                    //alert(res)
+                    console.log(res)
+                    $('.result').html(res)                  
+                },
+                error:function(e){
+                console.log(e)
+                $('.result').html(e)
+                }
+            })
+        })
+    })
+</script>
+    
+{% endblock topcontent %}
+
+
+<!-- intergrity -->
+{% block middlecontent %}
+
+<section>
+    <div class="intergrity">
+        <div class="box mq" style="margin-right: 90px;">
+            <div class="img-box">
+                <img class="myimg" width="100px" height="100px"  src="{{ url_for('static',filename='images/shield.png')}}" alt="">
+            </div>
+            <div class="content-box">
+                <p>We offer a safe service and verified service to all our users. All menders undergo trainings before they're inducted </p>
+            </div>
+        </div>
+        <div class="box mq" style="margin-right: 90px;">
+            <div class="img-box">
+                <img class="myimg" width="100px" height="100px"  src="{{ url_for('static',filename='images/padlock.png')}}" alt="">
+            </div>
+            <div class="content-box">
+                <p>We look out for our users and make sure they get a satisfactory service with zero complaints.</p>
+            </div>
+        </div>
+        <div class="box">
+            <div class="img-box">
+                <img class="myimg" width="100px" height="100px"  src="{{ url_for('static',filename='images/tap.png')}}" alt="">
+            </div>
+            <div class="content-box">
+                <p>Mendee is very easy to us. it provides a great user interface that helps our users navigate easily through the page.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock middlecontent %}
+
+    
+
+<!-- services -->
+{% block bottomcontent %}
+
+<section>
+    <div class="box2">
+        <div class="mycontainer">
+            <div class="smaller-box">
+                <div class="title">
+                    <h4>Need Repair Service?</h4>
+                    <hr class="hr1 myhr">
+                </div>
+                <div class="service-pic">
+                    <img class="myimg" width="150" height="150" src="{{ url_for('static',filename='images/banner2.jpg')}}" alt="">
+                </div>
+                <div class="bttn text-center">
+                    <a href="{{ url_for('services')}}" class="mybtn" style="border: none;">Learn More</a>
+                </div>
+            </div>
+            <div class="smaller-box">
+                <div class="title">
+                    <h4>Need cleaning Service?</h4>
+                    <hr class="hr1 myhr">
+                </div>
+                <div class="service-pic">
+                    <img class="myimg" width="150" height="150" src="{{ url_for('static',filename='images/cleaners22.jpg')}}" alt="">
+                </div>
+                <div class="bttn text-center">
+                    <a href="{{ url_for('services')}}" class="mybtn" style="border: none;">Learn More</a>
+                </div>
+            </div>
+            <div class="smaller-box">
+                <div class="title">
+                    <h4>Need Errand Service?</h4>
+                    <hr class="hr1 myhr">
+                </div>
+                <div class="service-pic">
+                    <img class="myimg" width="150" height="150" src="{{ url_for('static',filename='images/delivery1.jpg')}}" alt="">
+                </div>
+                <div class="bttn text-center">
+                    <a href="{{ url_for('services')}}" class="mybtn" style="border: none;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock bottomcontent %}
+    
+
+<!-- what is mendee -->
+{% block whatismendee %}
+
+<section>
+    <div class="what">
+        <h3>What is Mendee</h3>
+        <hr class="myhr">
+        <p>Mendee is a platform that connects you to the help you need. You can easily pick up your phone and book a mender today to help you with repais, moving or any errand. it is totally safe and all registered menders have been provided with the adequate training</p>
+    </div>
+</section>
+
+{% endblock whatismendee %}
+    
+
+<!-- How it works -->
+{% block howitworks %}
+
+<section>
+    <div class="outer-box">
+        <div class="outer-container">
+            <h3>How it works</h3>
+            <hr class="myhr">
+            <div class="how-box">
+                <div class="inner-box">
+                    <div class="icon-box">
+                        <img class="icon" src="{{ url_for('static',filename='images/pick.png')}}" alt="">
+                    </div>
+                    <div class="how-text">
+                        <p>Pick a service</p>
+                    </div>
+                </div>
+                <div class="inner-box">
+                    <div class="icon-box">
+                        <img class="icon" src="{{ url_for('static',filename='images/choose.png')}}" alt="">
+                    </div>
+                    <div class="how-text">
+                        <p>Choose a mender</p>
+                    </div>
+                </div>
+                <div class="inner-box">
+                    <div class="icon-box">
+                        <img class="icon" src="{{ url_for('static',filename='images/agree.png')}}" alt="">
+                    </div>
+                    <div class="how-text">
+                        <p>Agree on a Date/time</p>
+                    </div>
+                </div>
+                <div class="inner-box">
+                    <div class="icon-box">
+                        <img class="icon" src="{{ url_for('static',filename='images/payment.png')}}" alt="">
+                    </div>
+                    <div class="how-text">
+                        <p>Make payment</p>
+                    </div>
+                </div>
+                <div class="inner-box">
+                    <div class="icon-box">
+                        <img class="icon" src="{{ url_for('static',filename='images/safe.png')}}" alt="" >
+                    </div>
+                    <div class="how-text">
+                        <p>Enjoy a safe service</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+{% endblock howitworks %}
+
+
+    <!-- category
+    <section>
+        <div class="category"></div>
+    </section> -->
+
+<!-- who is mendee for -->
+{% block who %}
+
+<section>
+    <div class="who what">
+        <h3>Who is Mendee for</h3>
+        <hr class="myhr">
+        <p>Mendee is everyday Nigerians who need access to skilled people who can provide them with everyday service at their convenient time. Mendee is for skilled artisans, people who can provide errand services, skilled and trained  </p>
+    </div>
+    <div class="who-container">
+        <div class="box3 mqy" style="margin-right: 40px;">
+            <div class="img-box3 cus">
+               <p>For Customers</p> <!-- <img class="mypic3" width="150px" height="150px"  src="images/whoimg.jpg" alt=""> -->
+            </div>
+            <div class="content-box3">
+                <ul>
+                    <li>You're guaranteed a refund if the mender doesn't provide service agreed upon</li>
+                    <li>You get to scan through various mender options and choose based on ratings by other people</li>
+                    <li>Full details of the Mender would be sent to your email upon successful booking.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="box3 mqy" style="margin-right: 40px;">
+            <div class="img-box3 art">
+                <p>For Artisans</p> <!-- <img class="mypic3" width="150px" height="150px"  src="images/whoimg.jpg" alt=""> -->
+            </div>
+            <div class="content-box3">
+                <ul>
+                    <li>Registration is totally free </li>
+                    <li>You get notifications of users trying to book you and you get to accept whichever service you're comfortable offering</li>
+                    <li>Payment made to you on completion of a successfully delivered service</li>
+                </ul>
+            </div>
+        </div>
+        <div class="box3">
+            <div class="img-box3 err img-fluid">
+                <p>For Erranders</p> <!-- <img class="mypic3" width="150px" height="150px"  src="images/whoimg.jpg" alt=""> -->
+            </div>
+            <div class="content-box3">
+                <ul>
+                    <li>Registration is totally free </li>
+                    <li>You get notifications of users trying to book you and you get to accept whichever service you're comfortable offering</li>
+                    <li>Payment made to you on completion of a successfully delivered service</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock who %}
+   
+
+<!-- customer-mendee -->
+{% block custmend %}
+
+<section>
+    <div class="customer_mender">
+        <div class="cust_mender_head">
+            <h3>Be Rest Assured</h3>
+            <hr class="new">
+        </div>
+        <div class="cust_mender_content">
+            <p>One of the most important elements of any successful service delivered to you as a user is confidence and peace of mind between the customer and the mender. it is critical that you trust mendee to facilitate a great service between you and your mender </p>
+        </div>
+    </div>
+</section>
+
+{% endblock custmend %}
+
+
+
+
+<!-- newsletter  -->
+{% block newsletter %}
+
+<div class="container">
+    <div class="row">
+        <div class="col newsletter-box">
+            <div class="form-cont">
+                <h2>Sign Up For our Newsletter</h2>
+                <p>Keep me up to date with updates and offers</p>
+                <form action="" class="newsletter search-box">
+                    <div><input type="text" name="email" placeholder="Enter Your Email Address" class="search-text"></div>
+                    <button class="mybtn mt-3 newsbtn" style="border: none;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock newsletter %}
+
+ 
+    
+
+
+   

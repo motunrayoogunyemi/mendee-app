@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.css')}}" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Dashboard layout</title>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- nav -->
+        <div class="row">
+           <div class="col nav-bar" >
+               <header>
+                   <div class="logo">
+                       <span class="logo-text">Mendee</span>
+                   </div>
+
+                   <nav>
+                       <ul>
+                           <li><a href="{{ url_for('home')}}">Home</a></li>
+                           <li><a href="{{ url_for('bookamender')}}">Book a mender</a></li>
+                           <li><a href="{{ url_for('account')}}">Account</a></li>
+                           <li><a href="{{ url_for('logout')}}">Log out</a></li>
+                       </ul>
+                  </nav>
+               </header>
+           </div>
+       </div>
+   </div>
+
+   <!-- account -->
+   <section>
+       <div class="account">
+           <h1>Welcome user</h1>
+           <div class="user-container">
+               <div class="side-bar">
+                   <div class="profile-pic"></div>
+                   <div class="side-bar-links">
+                   {{ records[0].cust_profile_pic }}
+                   {% if records[0].cust_profile_pic != None: %}
+                    {% set t = "customerprofilepictures"+'/'+records[0].cust_profile_pic %}
+                    {% else %}
+                    {% set t = '' %}
+                    {% endif %}
+                       <li><img src=" {{ url_for('static',filename=t)}}" width="200" height="200" alt=""></li>
+                        <li><a href="{{ url_for('account')}}" class="mylinks">Profile</a></li>
+                        <li><a href="{{ url_for('editprofile')}}" class="mylinks">Edit Profile</a></li>
+                        <li><a href="{{ url_for('resetpassword')}}" class="mylinks">Reset password</a></li>
+                        <li><a href="{{ url_for('payment')}}" class="mylinks">Payment</a></li>
+                        <li><a href="{{ url_for('mymendeeorder')}}" class="mylinks">My mendee orders</a></li>
+                        <li><a href="{{ url_for('logout')}}" class="mylinks">Logout</a></li>
+                        
+                   </div>
+               </div>
+               <!-- varying section starts -->
+               {% block varyingcontent %}
+
+               {% endblock %}
+               <!-- varying section ends -->
+           </div>
+       </div>
+   </section>
+
+
+
+</body>
+</html>

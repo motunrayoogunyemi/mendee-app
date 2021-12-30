@@ -1,0 +1,48 @@
+{% extends 'user/userlayout.html' %}
+
+
+{% block topcontent %}
+{% include 'user/bookingsnav.html' %}
+<br>
+<div class="layout">
+    <div class="form-section">
+        <div class="form-container">
+            <div class="white-container">
+                <p>Tell us the help you need. We use these details to show Menders in your area who fit your needs.</p>
+                    {% set m = get_flashed_messages() %}
+                    {% if m: %}                        
+                    {% for i in m: %}  
+                    <p class="alert alert-danger">{{ i }}</p> 
+                    {% endfor %}   
+                    {% endif %}
+                <form action="" method="post">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <div class="mt-3"><label for="">Your Location <span>*</span></label><input type="text" name="location" placeholder="Enter your Address" class="form-control"></div>
+                      <div class="mt-2">
+                        <label class="radio-inline">
+                            <input type="radio" name="time" checked>Less than 1 hour
+                          </label>
+                          <label class="radio-inline">
+                            <input type="radio" name="time">1 - 2 hours
+                          </label>
+                          <label class="radio-inline">
+                            <input type="radio" name="time">greater than 3 hours
+                          </label>
+                      </div>
+                      <div class="mt-2"><label for="">Enter the service you need <span>*</span></label><input type="text" name="service" placeholder="E.g house cleaning" class="form-control"></div>
+                      <div class="mt-2"><label for="">Details <span>*</span></label><textarea name="details" id="" class="form-control" placeholder="E.g I need help cleaning my entire house"></textarea></div>
+                    <div class="mt-3"><button id="btn" class="btn btn-block btn-primary">Find a Mender</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+{% endblock topcontent %}
+
+    
+
+   
+
+

@@ -1,0 +1,90 @@
+{% extends 'user/userlayout.html' %}
+
+<!-- hero -->
+{% block topcontent %}
+<section>
+    <div class="bookamender-container">
+        <div class="bookamender-content text-center">
+            <div>
+                <h2>Go to all Services</h2>
+                <a class="btn btn-primary mt-2" href="{{ url_for('services')}}">All Services</a>
+            </div>
+            <br>
+            <h1>Or Search for help</h1>
+            <p>Search for a help category. eg cleaning,plumbing,errand</p>
+            <div class="book-searchbox">
+                <input type="text" id="search" placeholder="Search.." name="search" class="search-text">
+                <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+            </div>
+            <div class="result"></div>
+        </div>
+    </div>
+    <br><br><br><br>
+</section>
+<!-- <section> -->
+    <!-- <svg class="svg-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#CCF381" fill-opacity="1" d="M0,224L40,202.7C80,181,160,139,240,144C320,149,400,203,480,208C560,213,640,171,720,138.7C800,107,880,85,960,101.3C1040,117,1120,171,1200,165.3C1280,160,1360,96,1400,64L1440,32L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg> -->
+    <!-- <div class="hero">
+        <div class="hero-content">
+            <h1>Search for help</h1>
+            <p>Search for a help category. eg cleaning,plumbing,errand</p> -->
+            <!-- <form class="example" action="" method="post"> -->
+                <!-- <div class="search-box">
+                    <input type="text" id="search" placeholder="Search.." name="search" class="search-text">
+                    <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                </div> -->
+                
+            <!-- </form> -->
+            <!-- <div class="result"></div>
+        </div>
+        <div class="hero-serv">
+            <div>
+                <h2>Or go to all Services</h2>
+                <a class="btn btn-block btn-primary" href="">All Services</a>
+            </div>
+        </div>
+       
+    </div> -->
+    <!-- <svg class="svg-bottom1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#4831D4" fill-opacity="1" d="M0,224L40,202.7C80,181,160,139,240,144C320,149,400,203,480,208C560,213,640,171,720,138.7C800,107,880,85,960,101.3C1040,117,1120,171,1200,165.3C1280,160,1360,96,1400,64L1440,32L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg> -->
+    <!-- <svg class="svg-bottom1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320"><path fill="#4831D4" fill-opacity="1" d="M0,224L40,202.7C80,181,160,139,240,144C320,149,400,203,480,208C560,213,640,171,720,138.7C800,107,880,85,960,101.3C1040,117,1120,171,1200,165.3C1280,160,1360,96,1400,64L1440,32L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg> -->
+    <!-- <svg class="svg-bottom2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,224L40,202.7C80,181,160,139,240,144C320,149,400,203,480,208C560,213,640,171,720,138.7C800,107,880,85,960,101.3C1040,117,1120,171,1200,165.3C1280,160,1360,96,1400,64L1440,32L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg> -->
+<!-- </section> -->
+<script src="{{url_for('static',filename='js/jquery.min.js')}}" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        //alert('ajhbfsh')
+        $('#search').on('input', function(e){
+            var searchtext = $('#search').val();
+            $.ajax({
+                method:'GET',
+                url:"/live",
+                data:{mytext:searchtext},
+                dataType:'text',
+                success:function(res){
+                    //alert(res)
+                    console.log(res)
+                    $('.result').html(res)                  
+                },
+                error:function(e){
+                console.log(e)
+                $('.result').html(e)
+                }
+            })
+        })
+    })
+</script>
+    
+{% endblock topcontent %}
+
+{% block custmend %}
+<!-- <section>
+    <div class="customer_mender">
+        <div class="cust_mender_head">
+            <h3>Be Rest Assured</h3>
+            <hr class="new">
+        </div>
+        <div class="cust_mender_content">
+            <p>One of the most important elements of any successful service delivered to you as a user is confidence and peace of mind between the customer and the mender. it is critical that you trust mendee to facilitate a great service between you and your mender </p>
+        </div>
+    </div>
+</section> -->
+{% endblock custmend %}
